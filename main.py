@@ -7,6 +7,16 @@ from slack_bolt.adapter.flask import SlackRequestHandler
 import vertexai
 from vertexai.generative_models import GenerativeModel, Part
 
+SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
+SLACK_SIGNING_SECRET = os.environ.get("SLACK_SIGNING_SECRET")
+GCP_PROJECT_ID = os.environ.get("SLACK_BOT_TOKEN") # 오타 주의! 예시입니다.
+
+# 서버가 켜질 때 뭐가 문제인지 로그에 직접 찍어버립니다.
+print(f"DEBUG: TOKEN 존재 여부 = {bool(SLACK_BOT_TOKEN)}")
+if not SLACK_BOT_TOKEN:
+    print("🚨 경고: SLACK_BOT_TOKEN이 환경변수에 없습니다!")
+
+
 # 1. 초기화
 app = App(
     token=os.environ["SLACK_BOT_TOKEN"],
