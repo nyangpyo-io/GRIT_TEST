@@ -1,0 +1,4 @@
+flask
+slack-bolt
+google-cloud-aiplatform
+requests
